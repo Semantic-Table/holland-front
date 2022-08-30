@@ -7,7 +7,7 @@ import {RiasecService} from "../../services/riasec.service";
 import {Riasec} from "../../classes/riasec";
 
 @Component({
-  selector: 'app-test',
+  selector: 'app-test .app',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.css']
 })

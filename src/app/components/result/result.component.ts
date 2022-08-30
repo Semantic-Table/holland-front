@@ -3,7 +3,7 @@ import {Riasec} from "../../classes/riasec";
 import {RiasecService} from "../../services/riasec.service";
 
 @Component({
-  selector: 'app-result',
+  selector: 'app-result .app',
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css']
 })

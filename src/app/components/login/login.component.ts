@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {QuestionService} from "../../services/question.service";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login .app',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
