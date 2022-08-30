@@ -1,0 +1,7 @@
+<p>test works!</p>
+<div *ngIf="question">
+  <p>{{question.category}}</p>
+  <p>Serie {{question.serial}}</p>
+  <p>{{question.text}}</p>
+   <button *ngFor="let response of responses" (click)="nextQuestion(response.weight)">{{response.name}}</button>
+</div>
