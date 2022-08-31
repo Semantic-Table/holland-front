@@ -1,0 +1,46 @@
+#maindiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+#appdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 70%;
+  width: 80%;
+  border: #D6AB2A 9px solid;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+}
+#buttondiv{
+
+  height: 40%;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+}
+button{
+  height: 2em;
+  font-size: 35px;
+}
+
+#category{
+  color: white;
+  align-self: start;
+  background-color: #D6AB2A;
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-10deg) translate(0, -30px);
+  border-radius: 10px;
+}
+
+#textdiv {
+  font-size: 28px;
+  width: 90%;
+  text-align: center;
+}

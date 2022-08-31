@@ -1,0 +1,49 @@
+#maindiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#suivant {
+  font-size: 32px;
+}
+
+.flex {
+  display: flex;
+  width: 90%;
+  font-size: 28px;
+  font-family: 'Inter', sans-serif;
+  color: #464646;
+}
+
+#appdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#imgriasec{
+  width: 40vh;
+}
+#imgholland{
+height: 30vh;
+}
+#green{
+  color: #28A8B0;
+}
+#blue{
+  color: #006C8F;
+}
+#orange{
+  color: #DB6B1C;
+}
+#violet{
+  color: #9A3A84;
+}
+#gold{
+  color: #D6AB2A;
+}
+#red{
+  color: #F1695C;
+}
