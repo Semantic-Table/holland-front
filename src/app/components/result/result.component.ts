@@ -11,7 +11,7 @@ import {EnteteService} from "../../services/entete.service";
 export class ResultComponent {
 public riasec : Riasec
   constructor(private riasecService : RiasecService, private enteteService : EnteteService) {
-    this.riasec = this.riasecService.riasec
-    this.enteteService.title.next("Résultat")
+    this.riasec = this.riasecService.riasec //on recupere l'instance de riasec pour affficher les résultat du test
+    this.enteteService.title.next("Résultat")//modification du title
   }
 }

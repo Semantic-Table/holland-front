@@ -5,6 +5,7 @@ import {BehaviorSubject, Observable} from "rxjs";
   providedIn: 'root'
 })
 export class EnteteService {
+  //creation d'un BehaviorSubject, ca ressemble a un Observable, c'est un type de variables auquel on souscrit et qui permet de recuperer ca valeur en temps réel
   private _title: BehaviorSubject<string> = new BehaviorSubject<string>('')
 
   constructor() {

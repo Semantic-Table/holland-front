@@ -13,36 +13,31 @@ import {EnteteService} from "../../services/entete.service";
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-  public id: number = 1;
-  public next: string = "";
-  public question: Question | undefined;
-  public responses: Response[] | undefined;
+  public id: number = 1; //question 1
+  public question: Question | undefined; //conteneur de la question
+  public responses: Response[] | undefined; //conteneur des reponses
 
-  constructor(private questionService: QuestionService, private route: Router, private riasecService: RiasecService, private enteteService : EnteteService) {
-    this.enteteService.title.next("Question 1")
+  constructor(private questionService: QuestionService, private route: Router, private riasecService: RiasecService, private enteteService: EnteteService) {
+    this.enteteService.title.next("Question 1")//modification du title
   }
 
   ngOnInit(): void {
-    this.responses = []
-    console.log(this.responses)
-    this.getQuestionById()
-
+    this.getQuestionById() //on sort la premiere question
   }
 
-  public getQuestionById() {
+  public getQuestionById() { //permet de recuperer la question grace a son id
     this.questionService.getQuestionById(this.id).subscribe(
       (response) => {
         console.log("requête réussie")
         this.question = response;
         console.log(response)
         this.getResponsesById()
-
       }
     )
 
   }
 
-  public getResponsesById() {
+  public getResponsesById() { //get les reponses grace aux requetes api presentes dans la question recu
     // @ts-ignore
     for (let i = 0; i < this.question.responses.length; i++) {
       this.questionService.getResponseById(this.question?.responses[i]).subscribe(
@@ -50,12 +45,17 @@ export class TestComponent implements OnInit {
           console.log("réponse récupérer")
           // @ts-ignore
           this.responses[i] = response
+          // @ts-ignore
+
+
+
         }
       )
     }
+
   }
 
-  nextQuestion(weight : number) {
+  nextQuestion(weight: number) { //traite la reponse de donner et effectuer la requete pour la question suivante
     switch (this.question?.serial) {
       case 1:
         this.riasecService.addR(weight)
@@ -78,17 +78,17 @@ export class TestComponent implements OnInit {
     }
     console.log(this.riasecService.riasec)
     this.responses = []
-    if (this.id == 10) {
+    if (this.id == 10) { // nombre de question total
       this.route.navigate(['result'])
     }
     this.id++
-    this.enteteService.title.next("Question " + this.id)
+    this.enteteService.title.next("Question " + this.id)//update du titre
     this.getQuestionById()
 
   }
 
   buttonColor(name: string): string {
-    switch (name){
+    switch (name) {
       case "j'aime":
         return "background-color : #75AB30"
         break;
@@ -109,7 +109,7 @@ export class TestComponent implements OnInit {
   }
 
   borderColor(category: string) {
-    switch (category){
+    switch (category) {
       case "INTERETS - ACTIVITES":
         return "border-color : #9A3A84"
         break;
@@ -125,8 +125,9 @@ export class TestComponent implements OnInit {
     }
     return '';
   }
+
   backgroundColor(category: string) {
-    switch (category){
+    switch (category) {
       case "INTERETS - ACTIVITES":
         return "background-color : #9A3A84"
         break;

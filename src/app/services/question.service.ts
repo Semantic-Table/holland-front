@@ -9,7 +9,7 @@ import {Response} from "../interfaces/response";
 })
 export class QuestionService {
 
-  private baseUrl : string= 'http://127.0.0.1:8000'
+  private baseUrl : string= 'http://127.0.0.1:8000' // l'url de base du serveur symfony, TOUT PAR DE LA
   constructor(private httpClient : HttpClient) {//le HttpClient sert a faire les requetes api
   }
 

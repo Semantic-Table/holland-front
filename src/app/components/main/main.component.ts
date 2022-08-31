@@ -12,8 +12,9 @@ export class MainComponent implements OnInit {
   public title: string;
 
   constructor(private enteteService: EnteteService) {
-this.title = ''
+    this.title = ''
     this.enteteService.title.subscribe(e => this.title = e)
+    //on souscrit a la variable title pour l'afficher en temps réel, elle est modifiée dans les components lors de leur construction
 
   }
 

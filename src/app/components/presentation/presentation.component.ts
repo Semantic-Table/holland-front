@@ -10,7 +10,7 @@ import {EnteteService} from "../../services/entete.service";
 export class PresentationComponent implements OnInit {
 
   constructor(private enteteService : EnteteService) {
-    this.enteteService.title.next("Présentation")
+    this.enteteService.title.next("Présentation")//modification du title
   }
 
   ngOnInit(): void {

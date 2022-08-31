@@ -11,7 +11,7 @@ import {EnteteService} from "../../services/entete.service";
 export class LoginComponent {
 
   constructor(private enteteService: EnteteService) {
-    this.enteteService.title.next('Atelier Bilan Orientation')
+    this.enteteService.title.next('Atelier Bilan Orientation')//modification du title
   }
 
 

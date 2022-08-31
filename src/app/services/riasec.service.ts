@@ -31,7 +31,6 @@ export class RiasecService {
     this._riasec.conventionnel += weight
   }
 
-
   get riasec(): Riasec {
     return this._riasec;
   }
