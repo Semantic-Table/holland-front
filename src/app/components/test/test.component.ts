@@ -6,6 +6,8 @@ import {Response} from "../../interfaces/response";
 import {RiasecService} from "../../services/riasec.service";
 import {Riasec} from "../../classes/riasec";
 import {EnteteService} from "../../services/entete.service";
+import {ProgressService} from "../../services/progress.service";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-test .app',
@@ -15,14 +17,18 @@ import {EnteteService} from "../../services/entete.service";
 export class TestComponent implements OnInit {
   public id: number = 1; //question 1
   public question: Question | undefined; //conteneur de la question
-  public responses: Response[] | undefined; //conteneur des reponses
+  public responses: Response[]; //conteneur des reponses
+  public imgurl: SafeUrl ="";
 
-  constructor(private questionService: QuestionService, private route: Router, private riasecService: RiasecService, private enteteService: EnteteService) {
+  constructor(private sanitizer: DomSanitizer, private questionService: QuestionService, private route: Router, private riasecService: RiasecService, private enteteService: EnteteService, private progressService: ProgressService) {
+
+    this.responses = []
     this.enteteService.title.next("Question 1")//modification du title
   }
 
   ngOnInit(): void {
     this.getQuestionById() //on sort la premiere question
+    this.progressService.setId(this.id);
   }
 
   public getQuestionById() { //permet de recuperer la question grace a son id
@@ -30,6 +36,7 @@ export class TestComponent implements OnInit {
       (response) => {
         console.log("requête réussie")
         this.question = response;
+        this.imgurl = this.sanitizer.bypassSecurityTrustUrl("C:/Users/stagiaire/PhpstormProjects/holland-back/public/media/" + this.question.img)
         console.log(response)
         this.getResponsesById()
       }
@@ -43,12 +50,9 @@ export class TestComponent implements OnInit {
       this.questionService.getResponseById(this.question?.responses[i]).subscribe(
         (response) => {
           console.log("réponse récupérer")
+          console.log(response)
           // @ts-ignore
           this.responses[i] = response
-          // @ts-ignore
-
-
-
         }
       )
     }
@@ -83,6 +87,7 @@ export class TestComponent implements OnInit {
     }
     this.id++
     this.enteteService.title.next("Question " + this.id)//update du titre
+    this.progressService.setId(this.id);
     this.getQuestionById()
 
   }

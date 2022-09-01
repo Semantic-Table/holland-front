@@ -8,7 +8,6 @@ import {TestComponent} from "./components/test/test.component";
 import {ResultComponent} from "./components/result/result.component";
 
 const routes : Routes = [
-
   {path: "", component: LoginComponent},
   {path: "login", component: LoginComponent},
   {path: "presentation", component: PresentationComponent},

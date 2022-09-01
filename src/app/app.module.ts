@@ -10,6 +10,7 @@ import { TestComponent } from './components/test/test.component';
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import { ResultComponent } from './components/result/result.component';
+import { ProgressComponent } from './components/progress/progress.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ResultComponent } from './components/result/result.component';
     LoginComponent,
     PresentationComponent,
     TestComponent,
-    ResultComponent
+    ResultComponent,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,

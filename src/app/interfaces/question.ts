@@ -6,4 +6,5 @@ export interface Question {
   category : string;
   responses : Response[];
   serial : number;
+  img : string;
 }
