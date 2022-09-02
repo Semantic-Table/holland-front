@@ -82,7 +82,7 @@ export class TestComponent implements OnInit {
     }
     console.log(this.riasecService.riasec)
     this.responses = []
-    if (this.id == 10) { // nombre de question total
+    if (this.id == this.progressService.getQuestion()) { // nombre de question total
       this.route.navigate(['result'])
     }
     this.id++
