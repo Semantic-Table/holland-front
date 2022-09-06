@@ -6,10 +6,10 @@
         <p>{{question.text}}</p>
       </div>
       <div *ngIf="question.img != null">
-        <img [src]="imgurl" alt="">
+        <img [src]="imgurl" alt="" height="200">
       </div>
      <div id="buttondiv">
-       <button *ngFor="let response of responses" (click)="nextQuestion(response.weight)" [style]="buttonColor(response.name)">{{response.name}}</button>
+       <button *ngFor="let response of question.responses" (click)="nextQuestion(response.weight)" [style]="buttonColor(response.name)">{{response.name}}</button>
      </div>
       <app-progress></app-progress>
     </div>

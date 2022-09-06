@@ -17,12 +17,10 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 export class TestComponent implements OnInit {
   public id: number = 1; //question 1
   public question: Question | undefined; //conteneur de la question
-  public responses: Response[]; //conteneur des reponses
-  public imgurl: SafeUrl ="";
+  public BASEURL : string = 'http://192.168.30.26:8000/media/'
+  public imgurl: string = ''
 
-  constructor(private sanitizer: DomSanitizer, private questionService: QuestionService, private route: Router, private riasecService: RiasecService, private enteteService: EnteteService, private progressService: ProgressService) {
-
-    this.responses = []
+  constructor( private questionService: QuestionService, private route: Router, private riasecService: RiasecService, private enteteService: EnteteService, private progressService: ProgressService) {
     this.enteteService.title.next("Question 1")//modification du title
   }
 
@@ -34,28 +32,10 @@ export class TestComponent implements OnInit {
   public getQuestionById() { //permet de recuperer la question grace a son id
     this.questionService.getQuestionById(this.id).subscribe(
       (response) => {
-        console.log("requête réussie")
         this.question = response;
-        this.imgurl = this.sanitizer.bypassSecurityTrustUrl("C:/Users/stagiaire/PhpstormProjects/holland-back/public/media/" + this.question.img)
-        console.log(response)
-        this.getResponsesById()
+        this.imgurl = this.BASEURL + this.question.img
       }
     )
-
-  }
-
-  public getResponsesById() { //get les reponses grace aux requetes api presentes dans la question recu
-    // @ts-ignore
-    for (let i = 0; i < this.question.responses.length; i++) {
-      this.questionService.getResponseById(this.question?.responses[i]).subscribe(
-        (response) => {
-          console.log("réponse récupérer")
-          console.log(response)
-          // @ts-ignore
-          this.responses[i] = response
-        }
-      )
-    }
 
   }
 
@@ -80,8 +60,6 @@ export class TestComponent implements OnInit {
         this.riasecService.addC(weight)
         break;
     }
-    console.log(this.riasecService.riasec)
-    this.responses = []
     if (this.id == this.progressService.getQuestion()) { // nombre de question total
       this.route.navigate(['result'])
     }
@@ -89,7 +67,6 @@ export class TestComponent implements OnInit {
     this.enteteService.title.next("Question " + this.id)//update du titre
     this.progressService.setId(this.id);
     this.getQuestionById()
-
   }
 
   buttonColor(name: string): string {
